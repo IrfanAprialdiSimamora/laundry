@@ -5,10 +5,10 @@
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($koneksi,$_POST['user']);
-      $mypassword = mysqli_real_escape_string($koneksi,$_POST['passcode']); 
+      $myusername = mysqli_real_escape_string($koneksi,$_POST['nama_pelanggan']);
+      $mypassword = mysqli_real_escape_string($koneksi,$_POST['password']); 
       
-      $sql = "SELECT id FROM tb_admin WHERE user = '$myusername' and passcode = '$mypassword'";
+      $sql = "SELECT id_pelanggan FROM tb_pelanggan WHERE nama_pelanggan = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($koneksi,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row;
@@ -21,7 +21,7 @@
          //session_register("user");
          $_SESSION['login_user'] = $myusername;
          
-         header("location: dassbord.php");
+         header("location: berandauser.php");
       }else {
          $error = "Your Login Name or Password is invalid";
       }
@@ -58,10 +58,10 @@
             <div style = "margin:30px">
                
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "user" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "passcode" class = "box" /><br/><br />
+                  <label>UserName  :</label><input type = "text" name = "nama_pelanggan" class = "box"/><br /><br />
+                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
-				  <a href="user.php">Login As User</a>
+				  <a href="buatakun.php">Sign Up</a>
                </form>
                
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>
