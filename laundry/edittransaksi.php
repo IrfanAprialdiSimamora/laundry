@@ -46,13 +46,11 @@
 
  //syntax php untuk edit data ke database
  if (isset($_POST['edit'])) {
-  $query="UPDATE tb_transaksi SET pelanggan_transaksi='".$_POST['pelanggan_transaksi']."',
- tgl_masuk_transaksi='".$_POST['tgl_masuk_transaksi']."',
-  harga_transaksi='".$_POST['harga_transaksi']."',
-  berat_transaksi='".$_POST['berat_transaksi']."' ,
+  $query="UPDATE tb_transaksi SET
   tgl_selesai_transaksi='".$_POST['tgl_selesai_transaksi']."',
-  status_transaksi='".$_POST['status_transaksi']."'
-  WHERE id_pelanggan='$no'";
+  status_transaksi='".$_POST['status_transaksi']."',
+  status_cucian='".$_POST['status_cucian']."'
+  WHERE id_transaksi='$no'";
 	$result=mysqli_query($koneksi,$query);
 	
   if ($query) {
@@ -71,33 +69,27 @@
  <!--form edit -->
  <form method="POST">
   <tr>
-   <td>Nama</td>
-   <td><input name="pelanggan_transaksi" size="30" value="<?php echo $data['pelanggan_transaksi']; ?>"></td>
-  </tr>
-  <tr>
-   <td>Tanggal Masuk Transaksi</td>
-   <td><input  name="tgl_masuk_transaksi" type="date" size="30" value="<?php echo $data['tgl_masuk_transaksi']; ?>"></td>
-  </tr>
-  <tr>
-  <td>Harga Transaksi</td>
-   <td><input  name="harga_transaksi" type="number" size="30" value="<?php echo $data['harga_transaksi']; ?>"></td>
-  </tr>
-  <tr>
-  <td>Berat Cucian</td>
-   <td><input  name="berat_transaksi" type="number" size="30" value="<?php echo $data['berat_transaksi']; ?>"></td>
-  </tr>
-  <tr>
-  <tr>
    <td>Tanggal Selesai Dibayar</td>
-   <td><input  name="tgl_selesai_transaksi" type="date" size="30" value="<?php echo $data['tgl_selesai_transaksi']; ?>"></td>
+   <td><input  name="tgl_selesai_transaksi" type="date" size="30" value="<?php echo $data['tgl_selesai_transaksi']; ?>">
+  </td>
   </tr>
   <tr>
-  <td>Status :
-<select>
-  <option name="status_transaksi" value="Selesai">SELESAI</option>
-  <option name="status_transaksi" value="Belum">BELUM</option>
+  <td>Status Pembayaran : </td>
+<td>
+<select name="status_transaksi" type="text" value="<?php echo $data['status_transaksi']; ?>">
+  <option value="Belum">BELUM</option>
+  <option value="Selesai">SELESAI</option>
 </select></td>
   </tr>
+  <tr>
+  <td>Status Cucian : </td>
+<td>
+<select name="status_cucian" type="text" value="<?php echo $data['status_cucian']; ?>">
+  <option value="Belum">BELUM</option>
+  <option value="Selesai">SELESAI</option>
+</select></td>
+  </tr>
+  <tr>
    <td colspan="2"><input type="submit" name="edit" value="Edit"></td>
   </tr>
  </form>

@@ -78,7 +78,7 @@
 		  <td><?php echo $data['jenis_layanan']; ?></td>
 		  <td><?php echo $data['harga_layanan']; ?></td>
 		  <td><?php echo $data['berat_transaksi']; ?></td>
-		  <td><?php echo $data['harga_transaksi']; ?></td>
+		  <td><?php echo $data['harga_layanan']*$data['berat_transaksi']; ?></td>
           <td><?php echo $data['tgl_masuk_transaksi']; ?></td>
           <td><?php echo $data['status_cucian']; ?></td>
           <td><?php echo $data['tgl_selesai_transaksi']; ?></td>
@@ -87,6 +87,7 @@
           <td>
 		  <a href="cetak.php?id_transaksi=<?php echo $data['id_transaksi']; ?>">Cetak</a>
 		  <a href="edittransaksi.php?id_transaksi=<?php echo $data['id_transaksi']; ?>">Edit</a>
+		  <a href="hapustransaksi.php?id_transaksi=<?php echo $data['id_transaksi']; ?>">Hapus</a>
 		  </td>
       </tr>
 		<?php 

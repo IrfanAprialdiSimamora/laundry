@@ -6,11 +6,13 @@ include "koneksi.php";
 $jenis = $_POST['jenis_layanan'];
 $nama = $_POST['nama_pelanggan'];
 $masuk = $_POST['tgl_masuk_transaksi'];
-$harga = $_POST['harga_transaksi'];
 $berat = $_POST['berat_transaksi'];
+$lunas = $_POST['tgl_selesai_transaksi'];
+$transaksi = $_POST['status_transaksi'];
+$cucian = $_POST['status_cucian'];
 // perintah SQL
 $query="INSERT INTO tb_transaksi VALUES 
-('','$jenis','$nama','$masuk',pelanggan_transaksi,'$harga','$berat',tgl_selesai_transaksi,status_transaksi,status_cucian) " ;
+('','$jenis','$nama','$masuk','$berat','$lunas','$transaksi','$cucian') " ;
 $hasil=mysqli_query($koneksi,$query);
 if ($hasil){
 

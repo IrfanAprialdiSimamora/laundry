@@ -63,8 +63,24 @@
 	</select>
 </td></tr>
 <tr><td>Tanggal Masuk Transaksi</td> <td><input type="date" name="tgl_masuk_transaksi" size="10"><tr><td></td>
-<tr><td>Harga Transaksi</td> <td><input type="number" name="harga_transaksi" size="10"><tr><td></td>
 <tr><td>Berat Cucian</td> <td><input type="number" name="berat_transaksi" size="10"><tr><td></td>
+<tr><td>Tanggal Selesai Dibayar</td> <td><input type="date" name="tgl_selesai_transaksi" size="10"><tr><td></td>
+  <tr>
+  <td>Status Pembayaran :</td>
+  <td>
+<select name="status_transaksi" type="text">
+  <option value="Selesai">SELESAI</option>
+  <option value="Belum">BELUM</option>
+</select></td>
+  </tr>
+  <tr>
+  <td>Status Cucian :</td>
+  <td>
+<select name="status_cucian" type="text">
+  <option value="Selesai">SELESAI</option>
+  <option value="Belum">BELUM</option>
+</select></td>
+  </tr>
 <td><input type="submit" Value="Submit" align="right"><input type="reset" Value="Clear" ></td></tr>
 </table>
 			<a href = 'dassbord.php'> Kembali </a>
