@@ -9,7 +9,8 @@ $masuk = $_POST['tgl_masuk_transaksi'];
 $harga = $_POST['harga_transaksi'];
 $berat = $_POST['berat_transaksi'];
 // perintah SQL
-$query="INSERT INTO tb_transaksi VALUES ('','$jenis','$nama' ,'$masuk','$harga','$berat') " ;
+$query="INSERT INTO tb_transaksi VALUES 
+('','$jenis','$nama','$masuk',pelanggan_transaksi,'$harga','$berat',tgl_selesai_transaksi,status_transaksi,status_cucian) " ;
 $hasil=mysqli_query($koneksi,$query);
 if ($hasil){
 

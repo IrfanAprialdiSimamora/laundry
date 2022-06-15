@@ -36,7 +36,7 @@
 <h3>Selamat Datang Di Laundry Ikhlas</h3>
 <form method = 'POST' action = 'addtransaksi.php'>
 <h2 align="center">
-   <font color="#FF0000" style="alignment-baseline:" ><i><u>Transaksi Baru </u></i></font></h2>
+<font color="#FF0000" style="alignment-baseline:" ><i><u>Transaksi Baru </u></i></font></h2>
 <table border="0">
 <tr><td>Jenis Layanan</td>
 <td>

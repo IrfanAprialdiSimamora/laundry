@@ -50,18 +50,22 @@
 		<tr>
 			<th>No</th>
 			<th>Nama Pelanggan </th>
+			<th>Jenis Pakaian </th>
+			<th>Harga Layanan </th>
+			<th>Berat Cucian</th>
+			<th>Harga Total</th>
 			<th>Tanggal Transaksi</th>
-			<th>Harga Transaksi</th>
-            <th>Berat Cucian</th>
+			<th>Status Cucian</th>
             <th>Tanggal Pengambilan</th>
-            <th>Status</th>
+			<th>Status Transaksi</th>
 			<th>Aksi</th>			
 			
 		</tr>
 
 		<?php 
 		include "koneksi.php";
-		$query= "SELECT * FROM tb_transaksi";
+		$query= "SELECT * FROM tb_pakaian,tb_pelanggan,tb_transaksi 
+		WHERE tb_pakaian.id_pakaian=tb_transaksi.id_pakaian AND tb_pelanggan.id_pelanggan=tb_transaksi.id_pelanggan";
 		$result=mysqli_query($koneksi,$query);
 		if(mysqli_num_rows($result)>0){
 		$no = 1;
@@ -70,10 +74,13 @@
       <tr>
           <!--untuk menampilkannya berdasarkan field yang ada pada tabel data karyawan-->
           <td><?php echo $no; ?></td>
-          <td><?php echo $data['pelanggan_transaksi']; ?></td>
+          <td><?php echo $data['nama_pelanggan']; ?></td>
+		  <td><?php echo $data['jenis_layanan']; ?></td>
+		  <td><?php echo $data['harga_layanan']; ?></td>
+		  <td><?php echo $data['berat_transaksi']; ?></td>
+		  <td><?php echo $data['harga_transaksi']; ?></td>
           <td><?php echo $data['tgl_masuk_transaksi']; ?></td>
-          <td><?php echo $data['harga_transaksi']; ?></td>
-          <td><?php echo $data['berat_transaksi']; ?></td>
+          <td><?php echo $data['status_cucian']; ?></td>
           <td><?php echo $data['tgl_selesai_transaksi']; ?></td>
           <td><?php echo $data['status_transaksi']; ?></td>
 
