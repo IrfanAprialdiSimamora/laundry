@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Laundry</title>
 <script src="https://kit.fontawesome.com/a01a6d192c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
-<body style = 'margin : 20px; font : 16px arial;' backgroundcolor="aqua">
+<body>
 <div class="header">
-<h2>Laundry</h2>
-<a href="index.php" class="tombol">Logout</a>
-<h4 >Salama' To Pole</h4>
+<a href="logout.php" class="btn btn-primary">Logout</a>
 </div>
 <input type="checkbox" id="cek">
 <label for="cek">
@@ -21,7 +18,7 @@
 <header>
 </header>
 <ul>
-<li><a href="dashboard.php"><i class="fas fa-laptop"></i>Beranda</a></li>
+<li><a href="dassbord.php"><i class="fas fa-laptop"></i>Beranda</a></li>
 <li><a href="pelanggan.php"><i class="fas fa-users"></i>Pelanggan</a></li>
 <li><a href="transaksi.php"><i class="fas fa-print"></i>Transaksi</a></li>
 <li><a href="laporan.php"><i class="fas fa-chart-line"></i>Laporan</a></li>
@@ -30,16 +27,15 @@
 </div>
 <section>
 <div class="conten">
-<h3>Selamat Datang Di Laundry Ikhlas</h3>
 	<form method = 'POST' action = 'addlayanan.php'>
-<h2 align="center">
-   <font color="#FF0000" style="alignment-baseline:" ><i><u>Input Data Layanan Baru </u></i></font></h2>
-<table border="0" align="center">
+<h2><font color="#FF0000" style="alignment-baseline:" ><i><u>Input Data Layanan Baru </u></i></font></h2>
+   <table class="table table-responsive table-striped">
 <tr><td>Jenis Layanan</td> <td><input type="text" name="jenis_layanan" size="30" /></td></tr>
-<tr><td> Harga Layanan</td> <td><input type="text" name="harga_layanan" size="10">
-<tr><td></td><td><input type="submit" Value="Submit" align="right"><input type="reset" Value="Clear" ></td></tr>
+<tr><td> Harga Layanan</td> <td><input type="number" name="harga_layanan" size="10"></td></tr>
+<td><input class="btn btn-primary" type="submit" Value="Simpan" alignment="right">
+<input class="btn btn-warning" type="reset" Value="Bersihkan" >
+<a class="btn btn-danger" href = 'dassbord.php'> Kembali </a></td>
 </table>
-			<a href = 'dassbord.php'> Kembali </a>
 			</form>
 </div>
  

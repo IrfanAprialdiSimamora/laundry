@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Laundry</title>
 <script src="https://kit.fontawesome.com/a01a6d192c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
-<body style = 'margin : 20px; font : 16px arial;' backgroundcolor="aqua">
+<body>
 <div class="header">
-<h2>Laundry</h2>
-<a href="index.php" class="tombol">Logout</a>
-<h4 >Salama' To Pole</h4>
+<a href="logout.php" class="btn btn-primary">Logout</a>
 </div>
 <input type="checkbox" id="cek">
 <label for="cek">
@@ -21,7 +18,7 @@
 <header>
 </header>
 <ul>
-<li><a href="dashboard.php"><i class="fas fa-laptop"></i>Beranda</a></li>
+<li><a href="dassbord.php"><i class="fas fa-laptop"></i>Beranda</a></li>
 <li><a href="pelanggan.php"><i class="fas fa-users"></i>Pelanggan</a></li>
 <li><a href="transaksi.php"><i class="fas fa-print"></i>Transaksi</a></li>
 <li><a href="laporan.php"><i class="fas fa-chart-line"></i>Laporan</a></li>
@@ -30,17 +27,17 @@
 </div>
 <section>
 <div class="conten">
-<h3>Selamat Datang Di Laundry Ikhlas</h3>
 	<form method = 'POST' action = 'addpelanggan.php'>
-<h2 align="center">
+<h2>
    <font color="#FF0000" style="alignment-baseline:" ><i><u>Input Data Pelanggan Baru </u></i></font></h2>
-<table border="0" align="center">
+<table class="table table-responsive table-striped">
 <tr><td>Nama</td> <td><input type="text" name="nama_pelanggan" size="30" /></td></tr>
 <tr><td> Nomor Telepon</td> <td><input type="text" name="telp_pelanggan" size="10">
 <tr><td>Alamat </td> <td><textarea name="alamat_pelanggan" row="5" cols="31"></textarea></td></tr>
-<tr><td></td><td><input type="submit" Value="Submit" align="right"><input type="reset" Value="Clear" ></td></tr>
+<td><input class="btn btn-primary" type="submit" Value="Simpan" alignment="right">
+<input class="btn btn-warning" type="reset" Value="Bersihkan" >
+<a class="btn btn-danger" href = 'dassbord.php'> Kembali </a></td>
 </table>
-			<a href = 'dassbord.php'> Kembali </a>
 			</form>
 </div>
  

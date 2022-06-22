@@ -2,19 +2,15 @@
  include("koneksi.php"); // untuk memanggil file koneksi.php
 ?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Laundry</title>
 <script src="https://kit.fontawesome.com/a01a6d192c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
-<body style = 'margin : 20px; font : 16px arial;' backgroundcolor="aqua">
+<body>
 <div class="header">
-<h2>Laundry</h2>
-<a href="index.php" class="tombol">Logout</a>
-<h4 >Salama' To Pole</h4>
-</div>
+<a href="logout.php" class="btn btn-primary">Logout</a>
 <input type="checkbox" id="cek">
 <label for="cek">
 <i class="fas fa-arrow-right" id="btn"></i>
@@ -24,7 +20,7 @@
 <header>
 </header>
 <ul>
-<li><a href="dashboard.php"><i class="fas fa-laptop"></i>Beranda</a></li>
+<li><a href="dassbord.php"><i class="fas fa-laptop"></i>Beranda</a></li>
 <li><a href="pelanggan.php"><i class="fas fa-users"></i>Pelanggan</a></li>
 <li><a href="transaksi.php"><i class="fas fa-print"></i>Transaksi</a></li>
 <li><a href="laporan.php"><i class="fas fa-chart-line"></i>Laporan</a></li>
@@ -33,11 +29,9 @@
 </div>
 <section>
 <div class="conten">
-<h3>Selamat Datang Di Laundry Ikhlas</h3>
 <form method = 'POST' action = 'addtransaksi.php'>
-<h2 align="center">
-<font color="#FF0000" style="alignment-baseline:" ><i><u>Transaksi Baru </u></i></font></h2>
-<table border="0">
+<h2 alignment="center"><font color="#FF0000" style="alignment-baseline:" ><i><u>Transaksi Baru </u></i></font></h2>
+<table class="table table-responsive table-striped">
 <tr><td>Jenis Layanan</td>
 <td>
 	<select name="jenis_layanan">
@@ -81,10 +75,11 @@
   <option value="Belum">BELUM</option>
 </select></td>
   </tr>
-<td><input type="submit" Value="Submit" align="right"><input type="reset" Value="Clear" ></td></tr>
+<td><input class="btn btn-primary" type="submit" Value="Simpan" alignment="right">
+<input class="btn btn-warning" type="reset" Value="Bersihkan" >
+<a class="btn btn-danger" href = 'dassbord.php'> Kembali </a></td>
 </table>
-			<a href = 'dassbord.php'> Kembali </a>
-			</form>
+</form>
 </div>
  
 </section>

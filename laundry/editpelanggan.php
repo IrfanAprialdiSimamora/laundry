@@ -2,16 +2,15 @@
  include("koneksi.php"); // untuk memanggil file koneksi.php
 ?>
 <!DOCTYPE html>
-<html>
 <head>
- <title></title>
- <link rel="stylesheet" type="text/css" href="style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://kit.fontawesome.com/a01a6d192c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 <div class="header">
-<h2>Laundry</h2>
-<a href="index.php" class="tombol">Logout</a>
-<h4 >Salama' To Pole</h4>
+<a href="logout.php" class="btn btn-primary">Logout</a>
 </div>
 <input type="checkbox" id="cek">
 <label for="cek">
@@ -22,19 +21,16 @@
 <header>
 </header>
 <ul>
-<li><a href="dashboard.php"><i class="fas fa-laptop"></i>Beranda</a></li>
+<li><a href="dassbord.php"><i class="fas fa-laptop"></i>Beranda</a></li>
 <li><a href="pelanggan.php"><i class="fas fa-users"></i>Pelanggan</a></li>
 <li><a href="transaksi.php"><i class="fas fa-print"></i>Transaksi</a></li>
 <li><a href="laporan.php"><i class="fas fa-chart-line"></i>Laporan</a></li>
 <li><a href="harga.php"><i class="fas fa-list-alt"></i>Layanan</a></li>
 </ul>
 </div>
-<section>
-<div class="conten">
-<h3>Selamat Datang Di Laundry Ikhlas</h3>
-</div>
     <section>
-<table>
+    <h2><font color="#FF0000" style="alignment-baseline:" ><i><u>Ubah Data Pelanggan</u></i></font></h2>
+    <table class="table table-responsive table-striped">
 <?php
   //untuk mengambil value dari paramater id=
   $no=$_GET['id_pelanggan'];
@@ -78,9 +74,9 @@
   <td>Alamat</td>
    <td><input  name="alamat_pelanggan" size="30" value="<?php echo $data['alamat_pelanggan']; ?>"></td>
   </tr>
-  <tr>
-   <td colspan="2"><input type="submit" name="edit" value="Edit"></td>
-  </tr>
+  <td><input class="btn btn-primary" type="submit" name="edit" Value="Simpan" alignment="right">
+<input class="btn btn-warning" type="reset" Value="Bersihkan" >
+<a class="btn btn-danger" href = 'dassbord.php'> Kembali </a></td>
  </form>
 </table>
     </section>

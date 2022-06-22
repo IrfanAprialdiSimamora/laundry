@@ -1,76 +1,117 @@
-<?php
-   include("koneksi.php");
-   session_start();
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
-      $myusername = mysqli_real_escape_string($koneksi,$_POST['user']);
-      $mypassword = mysqli_real_escape_string($koneksi,$_POST['passcode']); 
-      
-      $sql = "SELECT id FROM tb_admin WHERE user = '$myusername' and passcode = '$mypassword'";
-      $result = mysqli_query($koneksi,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row;
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         //session_register("user");
-         $_SESSION['login_user'] = $myusername;
-         
-         header("location: dassbord.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-   }
-?>
+<!DOCTYPE html>
 <html>
-   
-   <head>
-      <title>Login Page</title>
-      
-      <style type = "text/css">
-         body {
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:14px;
-         }
-         label {
-            font-weight:bold;
-            width:100px;
-            font-size:14px;
-         }
-         .box {
-            border:#666666 solid 1px;
-         }
-      </style>
-      
-   </head>
-   
-   <body bgcolor = "#FFFFFF">
-	
-      <div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
-				
-            <div style = "margin:30px">
-               
-               <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "user" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "passcode" class = "box" /><br/><br />
-                  <input type = "submit" value = " Submit "/><br />
-				  <a href="user.php">Login As User</a>
-               </form>
-               
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>
-					
-            </div>
-				
-         </div>
-			
-      </div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Laundry</title>
+<script src="https://kit.fontawesome.com/a01a6d192c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<div class="header">
+<h2>Laundry Ikhlas</h2>
+<a href="login.php" class="btn btn-primary">Login</a>
+</div>
+<input type="checkbox" id="cek">
+<label for="cek">
+<i class="fas fa-arrow-right" id="btn"></i>
+<i class="fas fa-arrow-left" id="close"></i>
+</label>
+<div class="sidebar">
+<ul>
+<li><a href="status.php"><i class="fas fa-users"></i>Status Cucian</a></li>
+</ul>
+</div>
+<section>
+<div class="conten">
+	<br/>
+	<h3>Daftar dan Status Cucian</h3>
+	<form action="index.php" method="get">
+		<label>Cari :</label><br>
+		<input type="text" name="cari">
+		<input type="submit" class="btn btn-success" value="Cari">
+    </form>
+	<br>
+<?php 
+if(isset($_GET['cari'])){
+	$cari = $_GET['cari'];
+	echo "<b>Hasil pencarian : ".$cari."</b>";
+}
+?>
+	<table class="table table-bordered table-responsive table-striped">
+		<tr>
+			<th>No</th>
+			<th>Nama Pelanggan </th>
+			<th>Alamat</th>
+			<th>Jenis Pakaian </th>
+			<th>Harga Layanan </th>
+			<th>Berat Cucian</th>
+			<th>Harga Total</th>
+			<th>Tanggal Transaksi</th>
+			<th>Status Cucian</th>
+            <th>Tanggal Pengambilan</th>
+			<th>Status Transaksi</th>			
+		</tr>
 
-   </body>
+		<?php 
+		include "koneksi.php";
+		if(isset($_GET['cari'])){
+		$cari = $_GET['cari'];
+		$query= "SELECT * FROM tb_pakaian,tb_pelanggan,tb_transaksi 
+		WHERE nama_pelanggan like '%".$cari."%' AND tb_pakaian.id_pakaian=tb_transaksi.id_pakaian AND tb_pelanggan.id_pelanggan=tb_transaksi.id_pelanggan ";
+		$result=mysqli_query($koneksi,$query);
+		if(mysqli_num_rows($result)>0){
+			$no = 1;
+			while($data = mysqli_fetch_assoc($result)){
+			?>
+		  <tr>
+			  <!--untuk menampilkannya berdasarkan field yang ada pada tabel data karyawan-->
+			  <td><?php echo $no; ?></td>
+			  <td><?php echo $data['nama_pelanggan']; ?></td>
+			  <td><?php echo $data['alamat_pelanggan']; ?></td>
+			  <td><?php echo $data['jenis_layanan']; ?></td>
+			  <td><?php echo $data['harga_layanan']; ?></td>
+			  <td><?php echo $data['berat_transaksi']; ?></td>
+			  <td><?php echo $data['harga_layanan']*$data['berat_transaksi']; ?></td>
+			  <td><?php echo $data['tgl_masuk_transaksi']; ?></td>
+			  <td><?php echo $data['status_cucian']; ?></td>
+			  <td><?php echo $data['tgl_selesai_transaksi']; ?></td>
+			  <td><?php echo $data['status_transaksi']; ?></td>
+		  </tr>
+			<?php 
+			$no++;
+			} 
+			}				
+		}
+		else{
+		$query= "SELECT * FROM tb_pakaian,tb_pelanggan,tb_transaksi 
+		WHERE tb_pakaian.id_pakaian=tb_transaksi.id_pakaian AND tb_pelanggan.id_pelanggan=tb_transaksi.id_pelanggan";
+		$result=mysqli_query($koneksi,$query);
+		if(mysqli_num_rows($result)>0){
+		$no = 1;
+		while($data = mysqli_fetch_assoc($result)){
+		?>
+      <tr>
+          <!--untuk menampilkannya berdasarkan field yang ada pada tabel data karyawan-->
+          <td><?php echo $no; ?></td>
+          <td><?php echo $data['nama_pelanggan']; ?></td>
+		  <td><?php echo $data['alamat_pelanggan']; ?></td>
+		  <td><?php echo $data['jenis_layanan']; ?></td>
+		  <td><?php echo $data['harga_layanan']; ?></td>
+		  <td><?php echo $data['berat_transaksi']; ?></td>
+		  <td><?php echo $data['harga_layanan']*$data['berat_transaksi']; ?></td>
+          <td><?php echo $data['tgl_masuk_transaksi']; ?></td>
+          <td><?php echo $data['status_cucian']; ?></td>
+          <td><?php echo $data['tgl_selesai_transaksi']; ?></td>
+          <td><?php echo $data['status_transaksi']; ?></td>
+      </tr>
+		<?php 
+		$no++;
+		} 
+		}
+	}?>
+	</table>
+</div>
+</section>
+</body>
 </html>
